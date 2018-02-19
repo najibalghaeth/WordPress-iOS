@@ -135,7 +135,7 @@ class SignupEmailViewController: LoginViewController, NUXKeyboardResponder {
 
         // If cannot get Remote, display generic error message.
         guard let remote = AccountServiceRemoteREST(wordPressComRestApi: WordPressComRestApi()) else {
-            DDLogError("Error creating AccountServiceRemoteREST instance.")
+            NSLog("Error creating AccountServiceRemoteREST instance.")
             self.displayError(message: ErrorMessage.availabilityCheckFail.description())
             completion(false)
             return
@@ -149,7 +149,7 @@ class SignupEmailViewController: LoginViewController, NUXKeyboardResponder {
             completion(available)
         }, failure: { error in
             if let error = error {
-                DDLogError("Error checking email availability: \(error.localizedDescription)")
+                NSLog("Error checking email availability: \(error.localizedDescription)")
             }
             // If check failed, display generic error message.
             self.displayError(message: ErrorMessage.availabilityCheckFail.description())

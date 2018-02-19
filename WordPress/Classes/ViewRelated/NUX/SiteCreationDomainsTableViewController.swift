@@ -79,7 +79,7 @@ class SiteCreationDomainsTableViewController: NUXTableViewController {
             SVProgressHUD.dismiss()
             addSuggestions(suggestions)
         }) { [weak self] (error) in
-            DDLogError("Error getting Domain Suggestions: \(error.localizedDescription)")
+            NSLog("Error getting Domain Suggestions: \(error.localizedDescription)")
             self?.isSearching = false
             SVProgressHUD.dismiss()
         }

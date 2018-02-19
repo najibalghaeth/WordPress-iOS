@@ -64,7 +64,7 @@ class SiteCreationThemeSelectionCell: UICollectionViewCell {
                 if let error = error as NSError?, error.domain == NSURLErrorDomain && error.code == NSURLErrorCancelled {
                     return
                 }
-                DDLogError("Error loading theme screenshot: \(String(describing: error?.localizedDescription))")
+                NSLog("Error loading theme screenshot: \(String(describing: error?.localizedDescription))")
                 self?.showPlaceholder()
         })
     }

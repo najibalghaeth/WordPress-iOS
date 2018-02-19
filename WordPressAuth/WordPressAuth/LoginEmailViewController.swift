@@ -313,7 +313,7 @@ class LoginEmailViewController: LoginViewController, NUXKeyboardResponder {
             },
                                       failure: { [weak self] (error: Error) in
                                         WordPressAuthenticator.post(event: .loginFailed(error: error))
-                                        DDLogError(error.localizedDescription)
+                                        NSLog(error.localizedDescription)
                                         guard let strongSelf = self else {
                                             return
                                         }

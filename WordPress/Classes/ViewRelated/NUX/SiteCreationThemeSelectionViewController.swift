@@ -146,7 +146,7 @@ class SiteCreationThemeSelectionViewController: NUXCollectionViewController, UIC
                                         self?.collectionView?.reloadData()
             },
                                        failure: { (error) in
-                                        DDLogError("Error syncing themes: \(String(describing: error?.localizedDescription))")
+                                        NSLog("Error syncing themes: \(String(describing: error?.localizedDescription))")
                                         if let failure = failure,
                                             let error = error {
                                             failure(error as NSError)

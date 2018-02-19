@@ -153,7 +153,7 @@ class LoginSiteAddressViewController: LoginViewController, NUXKeyboardResponder 
             guard let error = error, let strongSelf = self else {
                 return
             }
-            DDLogError(error.localizedDescription)
+            NSLog(error.localizedDescription)
             WordPressAuthenticator.post(event: .loginFailedToGuessXMLRPC(error: error))
             WordPressAuthenticator.post(event: .loginFailed(error: error))
             strongSelf.configureViewLoading(false)
