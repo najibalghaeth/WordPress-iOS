@@ -24,3 +24,10 @@ class SupportViewController: UIViewController {
     var sourceTag: SupportSourceTag?
     var helpshiftOptions: [String: Any]?
 }
+
+
+extension WordPressSupportSourceTag {
+    func toSupportSourceTag() -> SupportSourceTag {
+        return .loginWPComPassword
+    }
+}
