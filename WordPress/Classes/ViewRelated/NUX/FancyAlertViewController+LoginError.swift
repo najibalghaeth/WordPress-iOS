@@ -17,7 +17,7 @@ extension FancyAlertViewController {
         }
     }
 
-    @objc static func siteAddressHelpController(loginFields: LoginFields, sourceTag: SupportSourceTag) -> FancyAlertViewController {
+    static func siteAddressHelpController(loginFields: LoginFields, sourceTag: WordPressSupportSourceTag) -> FancyAlertViewController {
         let moreHelpButton = ButtonConfig(Strings.moreHelp) { controller, _ in
             controller.dismiss(animated: true) {
                 // Find the topmost view controller that we can present from
@@ -27,8 +27,9 @@ extension FancyAlertViewController {
 
                 guard HelpshiftUtils.isHelpshiftEnabled() else { return }
 
+                // TODO: Move this method to the WordPress Client App (since this extension will live within the Authentication Framework).
                 let presenter = HelpshiftPresenter()
-                presenter.sourceTag = sourceTag
+                presenter.sourceTag = sourceTag.toSupportSourceTag()
                 presenter.optionsDictionary = loginFields.helpshiftLoginOptions()
                 presenter.presentHelpshiftConversationWindowFromViewController(viewController,
                                                                                refreshUserDetails: true,
@@ -66,7 +67,7 @@ extension FancyAlertViewController {
     ///
     /// - Returns: A FancyAlertViewController instance.
     ///
-    @objc static func alertForError(_ error: NSError, loginFields: LoginFields, sourceTag: SupportSourceTag) -> FancyAlertViewController {
+    static func alertForError(_ error: NSError, loginFields: LoginFields, sourceTag: WordPressSupportSourceTag) -> FancyAlertViewController {
         var message = error.localizedDescription
 
         DDLogError(message)
@@ -107,7 +108,7 @@ extension FancyAlertViewController {
     ///
     /// - Parameter message: The error message to show.
     ///
-    private static func alertForGenericErrorMessage(_ message: String, loginFields: LoginFields, sourceTag: SupportSourceTag) -> FancyAlertViewController {
+    private static func alertForGenericErrorMessage(_ message: String, loginFields: LoginFields, sourceTag: WordPressSupportSourceTag) -> FancyAlertViewController {
         let moreHelpButton = ButtonConfig(Strings.moreHelp) { controller, _ in
             controller.dismiss(animated: true) {
                 // Find the topmost view controller that we can present from
@@ -115,8 +116,9 @@ extension FancyAlertViewController {
                     let window = appDelegate.window,
                     let viewController = window?.topmostPresentedViewController else { return }
 
+                // TODO: Move this method to the WordPress Client App (since this extension will live within the Authentication Framework).
                 let supportController = SupportViewController()
-                supportController.sourceTag = sourceTag
+                supportController.sourceTag = sourceTag.toSupportSourceTag()
                 supportController.helpshiftOptions = loginFields.helpshiftLoginOptions()
 
                 let navController = UINavigationController(rootViewController: supportController)
@@ -146,7 +148,7 @@ extension FancyAlertViewController {
     /// - Parameter message: The error message to show.
     /// - Parameter sourceTag: tag of the source of the error
     ///
-    @objc static func alertForGenericErrorMessageWithHelpshiftButton(_ message: String, loginFields: LoginFields, sourceTag: SupportSourceTag) -> FancyAlertViewController {
+    static func alertForGenericErrorMessageWithHelpshiftButton(_ message: String, loginFields: LoginFields, sourceTag: WordPressSupportSourceTag) -> FancyAlertViewController {
         let moreHelpButton = ButtonConfig(Strings.moreHelp) { controller, _ in
             controller.dismiss(animated: true) {
                 // Find the topmost view controller that we can present from
@@ -156,8 +158,9 @@ extension FancyAlertViewController {
 
                 guard HelpshiftUtils.isHelpshiftEnabled() else { return }
 
+                // TODO: Move this method to the WordPress Client App (since this extension will live within the Authentication Framework).
                 let presenter = HelpshiftPresenter()
-                presenter.sourceTag = sourceTag
+                presenter.sourceTag = sourceTag.toSupportSourceTag()
                 presenter.optionsDictionary = loginFields.helpshiftLoginOptions()
                 presenter.presentHelpshiftConversationWindowFromViewController(viewController,
                                                                                refreshUserDetails: true,
