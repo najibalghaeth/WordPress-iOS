@@ -1,3 +1,6 @@
+import WordPressShared
+
+
 class LoginPrologueSignupMethodViewController: UIViewController {
     /// Buttons at bottom of screen
     private var buttonViewController: NUXButtonViewController?

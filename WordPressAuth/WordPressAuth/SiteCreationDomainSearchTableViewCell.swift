@@ -1,4 +1,6 @@
 import UIKit
+import WordPressShared
+
 
 protocol SiteCreationDomainSearchTableViewCellDelegate {
     func startSearch(for: String)

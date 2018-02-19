@@ -1,4 +1,6 @@
 import UIKit
+import WordPressShared
+
 
 // MARK: - WPTableViewCell Classes
 

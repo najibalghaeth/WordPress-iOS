@@ -1,5 +1,7 @@
 import UIKit
 import WebKit
+import WordPressShared
+
 
 class SiteCreationSitePreviewViewController: UIViewController {
 
