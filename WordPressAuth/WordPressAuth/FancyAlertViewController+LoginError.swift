@@ -23,15 +23,13 @@ extension FancyAlertViewController {
         let moreHelpButton = ButtonConfig(Strings.moreHelp) { controller, _ in
             controller.dismiss(animated: true) {
                 // Find the topmost view controller that we can present from
-                guard let delegate = UIApplication.shared.delegate,
-                    let window = delegate.window,
-                    let viewController = window?.topmostPresentedViewController,
-                    WordPressAuthenticator.shared.delegate?.helpshiftEnabled == true
+                guard WordPressAuthenticator.shared.delegate?.livechatActionEnabled == true,
+                    let viewController = UIApplication.shared.delegate?.window??.topmostPresentedViewController
                 else {
                     return
                 }
 
-                WordPressAuthenticator.shared.delegate?.presentHelpshift(from: viewController, sourceTag: sourceTag, options: loginFields.helpshiftLoginOptions())
+                WordPressAuthenticator.shared.delegate?.presentLivechat(from: viewController, sourceTag: sourceTag, options: loginFields.helpshiftLoginOptions())
             }
         }
 
@@ -71,7 +69,7 @@ extension FancyAlertViewController {
         NSLog(message)
 
         if sourceTag == .jetpackLogin && error.domain == WordPressAppErrorDomain && error.code == NSURLErrorBadURL {
-            if WordPressAuthenticator.shared.delegate?.helpshiftEnabled == true {
+            if WordPressAuthenticator.shared.delegate?.livechatActionEnabled == true {
                 // TODO: Placeholder Jetpack login error message. Needs updating with final wording. 2017-06-15 Aerych.
                 message = NSLocalizedString("We're not able to connect to the Jetpack site at that URL.  Contact us for assistance.", comment: "Error message shown when having trouble connecting to a Jetpack site.")
                 return alertForGenericErrorMessageWithHelpshiftButton(message, loginFields: loginFields, sourceTag: sourceTag)
@@ -79,11 +77,11 @@ extension FancyAlertViewController {
         }
 
         if error.domain != WPXMLRPCFaultErrorDomain && error.code != NSURLErrorBadURL {
-            if WordPressAuthenticator.shared.delegate?.helpshiftEnabled == true {
+            if WordPressAuthenticator.shared.delegate?.livechatActionEnabled == true {
                 return alertForGenericErrorMessageWithHelpshiftButton(message, loginFields: loginFields, sourceTag: sourceTag)
-            } else {
-                return alertForGenericErrorMessage(message, loginFields: loginFields, sourceTag: sourceTag)
             }
+
+            return alertForGenericErrorMessage(message, loginFields: loginFields, sourceTag: sourceTag)
         }
 
         if error.code == 403 {
@@ -153,12 +151,12 @@ extension FancyAlertViewController {
                 guard let appDelegate = UIApplication.shared.delegate,
                     let window = appDelegate.window,
                     let viewController = window?.topmostPresentedViewController,
-                    WordPressAuthenticator.shared.delegate?.helpshiftEnabled == true
+                    WordPressAuthenticator.shared.delegate?.livechatActionEnabled == true
                 else {
                     return
                 }
 
-                WordPressAuthenticator.shared.delegate?.presentHelpshift(from: viewController, sourceTag: sourceTag, options: loginFields.helpshiftLoginOptions())
+                WordPressAuthenticator.shared.delegate?.presentLivechat(from: viewController, sourceTag: sourceTag, options: loginFields.helpshiftLoginOptions())
             }
         }
 
