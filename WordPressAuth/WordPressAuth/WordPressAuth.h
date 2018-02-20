@@ -9,7 +9,5 @@ FOUNDATION_EXPORT const unsigned char WordPressAuthVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <WordPressAuth/PublicHeader.h>
 
 
-#import <WordPressAuth/WPNUXPrimaryButton.h>
 #import <WordPressAuth/WPNUXSecondaryButton.h>
-#import <WordPressAuth/WPNUXMainButton.h>
 #import <WordPressAuth/WPWalkthroughTextField.h>

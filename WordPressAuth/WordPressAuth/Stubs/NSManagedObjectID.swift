@@ -30,3 +30,4 @@ class ContextManager {
     let mainContext = NSManagedObjectContext()
     let persistentStoreCoordinator = NSPersistentStoreCoordinator()
 }
+

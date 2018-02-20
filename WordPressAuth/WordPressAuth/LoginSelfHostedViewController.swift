@@ -79,10 +79,10 @@ class LoginSelfHostedViewController: LoginViewController, NUXKeyboardResponder {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         // Ensure that the user info is set on the epilogue vc.
-        if let vc = segue.destination as? LoginEpilogueViewController {
-            vc.epilogueUserInfo = epilogueUserInfo()
-            vc.jetpackLogin = loginFields.meta.jetpackLogin
-        }
+//        if let vc = segue.destination as? LoginEpilogueViewController {
+//            vc.epilogueUserInfo = epilogueUserInfo()
+//            vc.jetpackLogin = loginFields.meta.jetpackLogin
+//        }
     }
 
 

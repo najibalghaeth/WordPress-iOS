@@ -107,10 +107,11 @@ class LoginViewController: NUXViewController, SigninWPComSyncHandler, LoginFacad
             return
         }
 
-        if let destination = segue.destination as? LoginEpilogueViewController {
-            destination.dismissBlock = source.dismissBlock
-            destination.jetpackLogin = source.loginFields.meta.jetpackLogin
-        } else if let destination = segue.destination as? LoginViewController {
+//        if let destination = segue.destination as? LoginEpilogueViewController {
+//            destination.dismissBlock = source.dismissBlock
+//            destination.jetpackLogin = source.loginFields.meta.jetpackLogin
+//        } else
+        if let destination = segue.destination as? LoginViewController {
             destination.loginFields = source.loginFields
             destination.restrictToWPCom = source.restrictToWPCom
             destination.dismissBlock = source.dismissBlock
