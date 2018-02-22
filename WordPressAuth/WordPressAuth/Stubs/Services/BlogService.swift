@@ -1,7 +1,6 @@
 import Foundation
 
 
-
 class BlogService {
 
     init(managedObjectContext: NSManagedObjectContext) {
